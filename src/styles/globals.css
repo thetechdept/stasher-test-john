@@ -1,0 +1,41 @@
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+mark {
+  background-color: transparent;
+  color: #026fe3;
+}
+
+section:after {
+  content: "";
+  position: absolute;
+  max-height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  bottom: 0;
+  right: 0;
+  width: 485px;
+  height: 1011px;
+  background-position: right 0 bottom 0;
+}
+
+.map-container {
+  width: calc(100% - 360px);
+  height: calc(100vh - 130px);
+}
