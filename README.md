@@ -18,6 +18,11 @@ cd hiraya
 npm i
 
 ```
+**!IMPORTANT**
+- Need to insert Goggle API Key on the following files:
+ - src\components\custom\PlaceAutoComplete.tsx
+ - src\patterns\StashpointsMap.tsx
+- Please replace <enter-api-key> with working Google API key
 
 Then, run the development server:
 
