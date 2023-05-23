@@ -3,7 +3,7 @@ import Box from '@/components/wrapper/Box'
 import theme from '@/theming/default'
 
 import "../styles/globals.css";
-import { ThemeProvider } from '@mui/material'
+import { ThemeProvider, Typography } from '@mui/material'
 import { Provider } from 'react-redux'
 import { setupStore } from '@/store'
 
@@ -21,7 +21,17 @@ export default function RootLayout({
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <Box minHeight={40} bgcolor={theme.palette.primary.dark}>Announcements</Box>
+          <Box
+            minHeight={40}
+            color={theme.palette.common.white}
+            bgcolor={theme.palette.primary.dark}
+            textAlign="center"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Typography variant='h5'>Stasher Frontend Test</Typography>
+          </Box>
           <MenuTopBar />
           {children}
        </LocalizationProvider>

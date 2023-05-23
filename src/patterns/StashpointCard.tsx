@@ -7,6 +7,19 @@ import Rating from "@mui/material/Rating"
 import { IStashpoint } from "@/types"
 import Typography from "@/components/wrapper/Typography"
 import Box from "@/components/wrapper/Box"
+import { Luggage, Place, PlaceOutlined } from "@mui/icons-material"
+import theme from "@/theming/default"
+
+/* =====================================================
+Title: <Stashpoint />
+Description: Pattern for displaying the stashpoint card
+Usage:
+
+```tsx
+<Stashpoint stashpoint={stashpoint item} />
+```
+
+===================================================== */
 
 interface IStashpointCardProps {
   stashpoint: IStashpoint
@@ -19,22 +32,36 @@ const StashpointCard = (props: IStashpointCardProps) => {
       <Box sx={{ display: 'flex', flexDirection: 'row'}}>
         <Box p={1}>
           <CardMedia
-            sx={{ height: 64, width: 117 }}
+            sx={{ height: 100, width: 100, borderRadius: 1 }}
             image={stashpoint.photos[0]}
             title={stashpoint.name}
           />
         </Box>
-        <CardContent>
-          <Typography variant="h5" >
-            {stashpoint.name}
-          </Typography>
-          <Typography variant="caption" color="text.secondary">
-            {stashpoint.address}
-          </Typography>
+        <CardContent >
+          <Typography variant="body1" >{stashpoint.name}</Typography>
+          <Box
+            display="flex"
+            flexDirection="row"
+            py={0.5}
+          >
+            <PlaceOutlined sx={{color: theme.palette.grey[400]}}/>
+            <Typography variant="caption" color="text.secondary">
+              {stashpoint.address}
+            </Typography>
+          </Box>
+          <Box
+            display="flex"
+            alignItems="center"
+            flexDirection="row"
+            py={0.5}
+          >
+            <Luggage sx={{color: theme.palette.grey[400]}} />
+            <Typography variant="caption" color="text.secondary"><b>{stashpoint.capacity}</b> available storage</Typography>
+          </Box>
           <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: "center", marginTop: 1}}>
-            <Chip sx={{marginX: 0.5}} size="small" label={stashpoint.type.toLocaleUpperCase()} color="primary" variant="outlined" />
+            <Chip sx={{marginX: 0.5, borderRadius: '4px'}} size="small" label={stashpoint.type.toLocaleUpperCase()} color="primary" variant="outlined" />
             <Chip
-              sx={{marginX: 0.5}}
+              sx={{marginX: 0.5, borderRadius: '4px'}}
               size="small"
               label={stashpoint.open_late ? 'OPEN LATE' : stashpoint.open_twentyfour_seven ? '24/7' : 'UNAVAILABLE'}
               color={stashpoint.open_late ? 'success' : stashpoint.open_twentyfour_seven ? 'success' : 'error'}

@@ -72,12 +72,14 @@ function ReadySearchBox({ onSelectAddress, defaultValue }: ISearchBoxProps) {
     retrieveAddress(address)
   };
 
+  console.log(data)
   return (
     <AutoComplete
       id="search"
+      placeholder={defaultValue}
       onSelect={handleSelect}
-      options={data.map(({ place_id, description }) => ({label: description, value: place_id, key: place_id}))}
-      renderInput={(params) => <TextField {...params} label="Places" onChange={handleChange} />}
+      options={data.map(({ place_id, description }) => ({label: description, value: place_id}))}
+      renderInput={(params) => <TextField {...params} label="Enter location" onChange={handleChange} />}
     />
   )
 }

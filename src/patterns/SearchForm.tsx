@@ -4,9 +4,7 @@ import { SearchBox } from "@/components/custom/PlaceAutoComplete";
 import Grid from "@mui/material/Grid";
 import Button from "@/components/wrapper/Button";
 import TextField from "@/components/wrapper/TextField";
-import Box from "@/components/wrapper/Box";
-import Typography from "@/components/wrapper/Typography";
-import theme from "@/theming/default";
+
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { useDispatch, useSelector } from "react-redux";
@@ -15,6 +13,16 @@ import { setPlace, setBagCount, setDropOffDate, setDropOffTime, setPickUpDate, s
 import { useGetStashpointsMutation } from "@/apis/stashpoints/stashpoints-service";
 import dayjs from 'dayjs';
 
+/* =====================================================
+Title: <SeachForm />
+Description: Pattern for displaying the main stashpoint search form
+Usage:
+
+```tsx
+<SeachForm />
+```
+
+===================================================== */
 
 export default function SearchForm() {
   const dispatch = useDispatch()
@@ -28,85 +36,77 @@ export default function SearchForm() {
       capacity: bagCount,
       lat: selectedPlace.latitude,
       lng: selectedPlace.longitude,
-      dropoff: dayjs(`${dayjs(dropOffDate).format('YYYY-MM-DD')}T${dayjs(dropOffTime).format('HH:mm')}`).toISOString(),
-      pickup: dayjs(`${dayjs(pickUpDate).format('YYYY-MM-DD')}T${dayjs(pickUpTime).format('HH:mm')}`).toISOString(),
+      dropoff: dayjs(`${dayjs(dropOffDate).format('YYYY-MM-DD')}T${dayjs(dropOffTime).format('HH:mm:ss')}`).toISOString(),
+      pickup: dayjs(`${dayjs(pickUpDate).format('YYYY-MM-DD')}T${dayjs(pickUpTime).format('HH:mm:ss')}`).toISOString(),
+      sort: 'distance'
     }
     fetchStashpoints(params)
     router.push('/search')
   }
 
   return (
-    <Box maxWidth={600} margin={'0 auto'} p={4}>
-      <Grid container spacing={1.5} mb={6}>
-        <Grid item xs={12} textAlign="center">
-          <Typography variant="h4" mb={2} color={theme.palette.grey[800]}>
-            <mark>Stash.</mark>
-            {' '}
-            Your luggage now
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <SearchBox
-            onSelectAddress={(address, latitude, longitude) => dispatch(setPlace({ address: address, latitude: latitude, longitude: longitude }))}
-            defaultValue=""
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <DatePicker
-            label="Drop Off Date"
-            value={dropOffDate}
-            onChange={(newValue) => dispatch(setDropOffDate(dayjs(newValue).toISOString()))}
-            format='MMM DD YYYY'
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <TimePicker
-            minutesStep={60}
-            label="Drop Off Time"
-            value={dropOffTime}
-            onChange={(newValue) => dispatch(setDropOffTime(dayjs(newValue).toISOString()))}
-            format='hh:mm'
-            ampm={false}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <DatePicker
-            label="Pick Up Date"
-            value={pickUpDate}
-            onChange={(newValue) => dispatch(setPickUpDate(dayjs(newValue).toISOString()))}
-            format='MMM DD YYYY'
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <TimePicker
-            label="Pick Up Time"
-            value={pickUpTime}
-            onChange={(newValue) => dispatch(setPickUpTime(dayjs(newValue).toISOString()))}
-            format='hh:mm'
-            ampm={false}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            InputProps={{ inputProps: {min: 1}}}
-            type="number"
-            label="Bags"
-            value={bagCount}
-            onChange={(e) => dispatch(setBagCount(e.target.value))}/>
-        </Grid>
-        <Grid item xs={12}>
-          <Button
-            variant="contained"
-            color="secondary"
-            fullWidth
-            size="large"
-            onClick={handleSubmit}
-            disabled={_isEmpty(selectedPlace.address) || !dropOffDate || !dropOffTime || !pickUpDate || !pickUpTime} 
-          >
-            Search
-          </Button>
-        </Grid>
+    <Grid container spacing={1.5}>
+      <Grid item xs={12}>
+        <SearchBox
+          onSelectAddress={(address, latitude, longitude) => dispatch(setPlace({ address: address, latitude: latitude, longitude: longitude }))}
+          defaultValue={selectedPlace.address}
+        />
       </Grid>
-    </Box>
+      <Grid item xs={6}>
+        <DatePicker
+          label="Drop Off Date"
+          value={dropOffDate ? dayjs(dropOffDate) : dropOffDate}
+          onChange={(newValue) => dispatch(setDropOffDate(dayjs(newValue).toISOString()))}
+          format='MMM DD YYYY'
+        />
+      </Grid>
+      <Grid item xs={6}>
+        <TimePicker
+          minutesStep={60}
+          label="Drop Off Time"
+          value={dropOffTime ? dayjs(dropOffTime) : dropOffTime}
+          onChange={(newValue) => dispatch(setDropOffTime(dayjs(newValue).toISOString()))}
+          format='hh:mm'
+          ampm={false}
+        />
+      </Grid>
+      <Grid item xs={6}>
+        <DatePicker
+          label="Pick Up Date"
+          value={pickUpDate ? dayjs(pickUpDate) : pickUpDate}
+          onChange={(newValue) => dispatch(setPickUpDate(dayjs(newValue).toISOString()))}
+          format='MMM DD YYYY'
+        />
+      </Grid>
+      <Grid item xs={6}>
+        <TimePicker
+          label="Pick Up Time"
+          value={pickUpTime ? dayjs(pickUpTime) : pickUpTime}
+          onChange={(newValue) => dispatch(setPickUpTime(dayjs(newValue).toISOString()))}
+          format='hh:mm'
+          ampm={false}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <TextField
+          InputProps={{ inputProps: {min: 1}}}
+          type="number"
+          label="Bags"
+          value={bagCount}
+          onChange={(e) => dispatch(setBagCount(e.target.value))}/>
+      </Grid>
+      <Grid item xs={12}>
+        <Button
+          variant="contained"
+          color="secondary"
+          fullWidth
+          size="large"
+          onClick={handleSubmit}
+          disabled={_isEmpty(selectedPlace.address) || !dropOffDate || !dropOffTime || !pickUpDate || !pickUpTime} 
+        >
+          Search
+        </Button>
+      </Grid>
+    </Grid>
   );
 }

@@ -4,6 +4,16 @@ import { Libraries, useGoogleMapsScript } from "use-google-maps-script";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 
+/* =====================================================
+Title: <StashpointMap />
+Description: Pattern for displaying Google map with mapped markers of stashpoints list
+Usage:
+
+```tsx
+<StashpointMap />
+```
+
+===================================================== */
 
 const libraries: Libraries = ["places"]
 

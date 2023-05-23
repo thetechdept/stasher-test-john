@@ -36,6 +36,6 @@ section:after {
 }
 
 .map-container {
-  width: calc(100% - 360px);
+  width: calc(100% - 400px);
   height: calc(100vh - 130px);
 }

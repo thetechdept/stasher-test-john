@@ -90,10 +90,11 @@ const theme = createTheme({
         },
         h5: {
           fontSize: '1rem',
+          fontWeight: 500,
         },
         h6: {
           fontSize: '1rem',
-          fontWeight: 700,
+          fontWeight: 500,
         },
         body1: {
 
@@ -115,7 +116,7 @@ const theme = createTheme({
           }
         }
       }
-    }
+    },
   },
 });
 

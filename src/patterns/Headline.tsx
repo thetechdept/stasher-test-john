@@ -2,6 +2,17 @@ import Box from "@/components/wrapper/Box"
 import Typography from "@/components/wrapper/Typography"
 import theme from "@/theming/default"
 
+/* =====================================================
+Title: <Headline />
+Description: Pattern for displaying index page headline panel
+Usage:
+
+```tsx
+<Headline />
+```
+
+===================================================== */
+
 const Headline = () => {
   return (
     <Box minHeight={200} display="flex" alignItems="center" flexDirection="row" bgcolor={theme.palette.grey[100]}>
