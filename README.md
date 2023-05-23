@@ -1,3 +1,8 @@
+![image](https://github.com/jpambulo/hiraya/assets/6073496/36298cf5-dcc3-44be-9925-c9ab2fe59623)
+![image](https://github.com/jpambulo/hiraya/assets/6073496/6cade45b-2e21-4eb4-afd7-3c651e3353d8)
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -80,6 +85,8 @@ As for these application, it is structured in a way that the following folder co
 - **pages > organisms**
     - collation of all patterns and components to form a single display screen.
 
+
+
 ```bash
 *** I intentionally wrap the UI framework components to prevent breaking
 changes on the code in the event that the application needs to migrate
@@ -87,5 +94,13 @@ from one UI framework to another. By doing so, migration effects should
 only be at the atomic level.
 ```
 
+## Other Implementation Details
+- The search results are ordered by in the following manner:
+ - bagDay in ascending
+ - rating in descending
+ - capacity in descending
 
+## Questions for Improvement
+- It would be nice if there is an endpoint documentation(like in apiary) so that I can see the details of the response, what does those attributes mean, other parameters that could further filter the list.
+- Basing on the requests on the https://stasher.com/, there seems to be more request parameters that can be used. Although, I limited the parameters based on the given instructions.
 
