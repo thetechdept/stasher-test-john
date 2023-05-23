@@ -1,5 +1,6 @@
-![image](https://github.com/jpambulo/hiraya/assets/6073496/36298cf5-dcc3-44be-9925-c9ab2fe59623)
-![image](https://github.com/jpambulo/hiraya/assets/6073496/6cade45b-2e21-4eb4-afd7-3c651e3353d8)
+![image](https://github.com/jpambulo/hiraya/assets/6073496/4d45eb3e-96ac-4478-95e1-c4c0d94f6370)
+![image](https://github.com/jpambulo/hiraya/assets/6073496/62296ff3-42b6-4672-8b52-8c21c452b2d6)
+
 
 
 
