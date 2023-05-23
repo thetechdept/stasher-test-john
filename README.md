@@ -1,3 +1,9 @@
+![image](https://github.com/jpambulo/hiraya/assets/6073496/4d45eb3e-96ac-4478-95e1-c4c0d94f6370)
+![image](https://github.com/jpambulo/hiraya/assets/6073496/62296ff3-42b6-4672-8b52-8c21c452b2d6)
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -80,6 +86,8 @@ As for these application, it is structured in a way that the following folder co
 - **pages > organisms**
     - collation of all patterns and components to form a single display screen.
 
+
+
 ```bash
 *** I intentionally wrap the UI framework components to prevent breaking
 changes on the code in the event that the application needs to migrate
@@ -87,5 +95,14 @@ from one UI framework to another. By doing so, migration effects should
 only be at the atomic level.
 ```
 
+## Other Implementation Details
+- The search results are ordered by in the following manner as I see relevant if I am the user of the app:
+ - bagDay in ascending - lowest price first
+ - rating in descending - with highest review ratings
+ - capacity in descending - number of available storage
+- I would love to sort it by closest distance to the search address given although not sure if the endpoint returns the data.
 
+## Questions for Improvement
+- It would be nice if there is an endpoint documentation(like in apiary) so that I can see the details of the response, what does those attributes mean, other parameters that could further filter the list.
+- Basing on the requests on the https://stasher.com/, there seems to be more request parameters that can be used. Although, I limited the parameters based on the given instructions.
 
