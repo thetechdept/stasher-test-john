@@ -23,7 +23,7 @@ const Map = () => {
   } = useSelector((state: RootState) => state)
 
   const { isLoaded, loadError } = useGoogleMapsScript({
-    googleMapsApiKey: "AIzaSyAVD73BLEtqODTIqADFBi_gPcQ3gkfrfX8",
+    googleMapsApiKey: "<enter-api-key>",
     libraries,
   });
 
