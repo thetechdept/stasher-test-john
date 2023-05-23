@@ -95,10 +95,11 @@ only be at the atomic level.
 ```
 
 ## Other Implementation Details
-- The search results are ordered by in the following manner:
- - bagDay in ascending
- - rating in descending
- - capacity in descending
+- The search results are ordered by in the following manner as I see relevant if I am the user of the app:
+ - bagDay in ascending - lowest price first
+ - rating in descending - with highest review ratings
+ - capacity in descending - number of available storage
+- I would love to sort it by closest distance to the search address given although not sure if the endpoint returns the data.
 
 ## Questions for Improvement
 - It would be nice if there is an endpoint documentation(like in apiary) so that I can see the details of the response, what does those attributes mean, other parameters that could further filter the list.
