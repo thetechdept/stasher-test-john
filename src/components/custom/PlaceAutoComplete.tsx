@@ -80,6 +80,13 @@ function ReadySearchBox({ onSelectAddress, defaultValue }: ISearchBoxProps) {
       onSelect={handleSelect}
       options={data.map(({ place_id, description }) => ({label: description, value: place_id}))}
       renderInput={(params) => <TextField {...params} label="Enter location" onChange={handleChange} />}
+      renderOption={(props, option) => {
+        return (
+          <li {...props} key={option.value}>
+            {option.label}
+          </li>
+        )
+      }}
     />
   )
 }
