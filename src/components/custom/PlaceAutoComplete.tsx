@@ -20,7 +20,7 @@ const libraries: Libraries = ["places"];
 
 export function SearchBox({ onSelectAddress, defaultValue }: ISearchBoxProps) {
   const { isLoaded, loadError } = useGoogleMapsScript({
-    googleMapsApiKey: "<enter-api-key>",
+    googleMapsApiKey: process.env.NEXT_PUBLIC_REACT_APP_GOOGLE_API_KEY ?? '',
     libraries,
   });
 
